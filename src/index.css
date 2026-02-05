@@ -1,6 +1,147 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Newsreader:opsz,wght@6..72,300..800&family=Recursive:wght@300;400;500;600&display=swap");
+
+:root {
+  color-scheme: light;
+  --paper-base: #f3eadb;
+  --paper-surface: #fbf6ee;
+  --paper-panel: #fffaf2;
+  --paper-ink: #2f271f;
+  --paper-ink-muted: #5a4e44;
+  --paper-border: #e2d6c6;
+  --paper-accent: #b76b4a;
+  --paper-accent-strong: #8f4a34;
+  --paper-highlight: #f3e5d3;
+  --shadow-soft: 0 12px 30px rgba(46, 32, 21, 0.12);
+  --shadow-float: 0 22px 48px rgba(46, 32, 21, 0.18);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body: "Newsreader", "Georgia", serif;
+  --font-mono: "Recursive", "SFMono-Regular", Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
+  background-color: var(--paper-base);
+  color: var(--paper-ink);
+  font-family: var(--font-body);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 45%),
+    radial-gradient(circle at 85% 0%, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0) 50%),
+    radial-gradient(circle at 0% 85%, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: -1;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background-color: var(--paper-base);
+}
+
+.app-header {
+  background: var(--paper-surface);
+  border-bottom: 1px solid var(--paper-border);
+  box-shadow: var(--shadow-inset);
+}
+
+.app-title {
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  color: var(--paper-ink);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  color: var(--paper-ink);
+  letter-spacing: 0.02em;
+}
+
+.paper-panel {
+  background: var(--paper-panel);
+  border: 1px solid var(--paper-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.toolbar-label {
+  color: var(--paper-ink-muted);
+  font-family: var(--font-body);
+}
+
+.toolbar-filename {
+  color: var(--paper-ink);
+  font-family: var(--font-body);
+  border: 1px dashed transparent;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.toolbar-filename:hover {
+  background-color: var(--paper-highlight);
+  border-color: rgba(183, 107, 74, 0.35);
+}
+
+.toolbar-input {
+  background: var(--paper-panel);
+  border: 1px solid var(--paper-border);
+  color: var(--paper-ink);
+  font-family: var(--font-body);
+  box-shadow: var(--shadow-inset);
+}
+
+.toolbar-input:focus {
+  outline: none;
+  border-color: var(--paper-accent);
+  box-shadow: 0 0 0 3px rgba(183, 107, 74, 0.2), var(--shadow-inset);
+}
+
+.toolbar-button {
+  background: var(--paper-ink);
+  color: var(--paper-panel);
+  border: 1px solid var(--paper-ink);
+  box-shadow: var(--shadow-soft);
+  transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.toolbar-button:hover {
+  background: var(--paper-accent-strong);
+  border-color: var(--paper-accent-strong);
+  box-shadow: var(--shadow-float);
+  transform: translateY(-1px);
+}
+
+.editor-textarea {
+  background: var(--paper-panel);
+  border: 1px solid var(--paper-border);
+  color: var(--paper-ink);
+  font-family: var(--font-mono);
+  line-height: 1.6;
+  box-shadow: var(--shadow-inset);
+}
+
+.editor-textarea::placeholder {
+  color: var(--paper-ink-muted);
+}
+
+.editor-textarea:focus {
+  outline: none;
+  border-color: var(--paper-accent);
+  box-shadow: 0 0 0 3px rgba(183, 107, 74, 0.18), var(--shadow-inset);
 }

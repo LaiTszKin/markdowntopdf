@@ -10,8 +10,8 @@ interface PreviewProps {
 export const Preview: React.FC<PreviewProps> = ({ content }) => {
   return (
     <div className="h-full flex flex-col">
-      <h2 className="text-lg font-semibold text-gray-800 mb-3 px-1">HTML 預覽</h2>
-      <div className="flex-1 overflow-auto bg-white rounded-lg border border-gray-200 p-6">
+      <h2 className="section-title text-lg font-semibold mb-3 px-1">HTML 預覽</h2>
+      <div className="flex-1 overflow-auto paper-panel rounded-2xl p-6">
         <div className="preview-content prose prose-gray max-w-none">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {content || '*預覽將顯示在這裡...*'}

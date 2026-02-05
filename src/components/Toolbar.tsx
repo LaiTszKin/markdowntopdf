@@ -15,9 +15,9 @@ export const Toolbar: React.FC<ToolbarProps> = ({ onDownload }) => {
   };
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 flex-wrap justify-end">
       <div className="flex items-center gap-2">
-        <label className="text-sm text-gray-600">文件名:</label>
+        <label className="toolbar-label text-sm">文件名:</label>
         {isEditing ? (
           <input
             type="text"
@@ -27,22 +27,22 @@ export const Toolbar: React.FC<ToolbarProps> = ({ onDownload }) => {
             onKeyDown={(e) => {
               if (e.key === 'Enter') setIsEditing(false);
             }}
-            className="px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:border-blue-400"
+            className="toolbar-input px-2 py-1 text-sm rounded-md"
             autoFocus
           />
         ) : (
           <span
             onClick={() => setIsEditing(true)}
-            className="px-2 py-1 text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded"
+            className="toolbar-filename px-2 py-1 text-sm cursor-pointer rounded-md"
           >
             {filename}
           </span>
         )}
-        <span className="text-sm text-gray-400">.pdf</span>
+        <span className="text-sm text-[color:var(--paper-ink-muted)]">.pdf</span>
       </div>
       <button
         onClick={handleDownload}
-        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+        className="toolbar-button flex items-center gap-2 px-4 py-2 rounded-lg"
       >
         <Download size={18} />
         <span>下載 PDF</span>

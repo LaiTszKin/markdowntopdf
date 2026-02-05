@@ -42,7 +42,7 @@ function hello() {
 
 ### 鏈接和圖片
 
-[訪問 GitHub](https://github.com)
+[訪問 GitHub](https://github.com/LaiTszKin/markdowntopdf)
 
 ---
 

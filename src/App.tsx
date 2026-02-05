@@ -19,16 +19,16 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-screen-2xl mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-800">Markdown 轉 PDF</h1>
+    <div className="app-shell">
+      <header className="app-header">
+        <div className="max-w-screen-2xl mx-auto px-4 py-4 flex items-center justify-between gap-6">
+          <h1 className="app-title text-2xl md:text-3xl font-semibold">Markdown 轉 PDF</h1>
           <Toolbar onDownload={handleDownload} />
         </div>
       </header>
 
-      <main className="max-w-screen-2xl mx-auto p-4 h-[calc(100vh-73px)]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-full">
+      <main className="max-w-screen-2xl mx-auto p-4 h-[calc(100vh-76px)]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
           <div className="h-full">
             <Editor value={content} onChange={setContent} />
           </div>
