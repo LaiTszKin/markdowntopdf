@@ -9,11 +9,11 @@ function App() {
   const { content, setContent } = useMarkdown();
   const previewRef = React.useRef<HTMLDivElement>(null);
 
-  const handleDownload = (filename: string) => {
+  const handleDownload = async (filename: string) => {
     if (previewRef.current) {
       const contentElement = previewRef.current.querySelector('.preview-content') as HTMLElement;
       if (contentElement) {
-        generatePdf(contentElement, filename);
+        await generatePdf(contentElement, filename);
       }
     }
   };

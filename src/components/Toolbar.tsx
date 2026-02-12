@@ -2,16 +2,25 @@ import React, { useState } from 'react';
 import { Download } from 'lucide-react';
 
 interface ToolbarProps {
-  onDownload: (filename: string) => void;
+  onDownload: (filename: string) => Promise<void> | void;
 }
 
 export const Toolbar: React.FC<ToolbarProps> = ({ onDownload }) => {
   const [filename, setFilename] = useState('document');
   const [isEditing, setIsEditing] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
+    if (isDownloading) return;
+
     const name = filename.trim() || 'document';
-    onDownload(name);
+    setIsDownloading(true);
+
+    try {
+      await onDownload(name);
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -42,10 +51,11 @@ export const Toolbar: React.FC<ToolbarProps> = ({ onDownload }) => {
       </div>
       <button
         onClick={handleDownload}
+        disabled={isDownloading}
         className="toolbar-button flex items-center gap-2 px-4 py-2 rounded-lg"
       >
         <Download size={18} />
-        <span>下載 PDF</span>
+        <span>{isDownloading ? '匯出中...' : '下載 PDF'}</span>
       </button>
     </div>
   );

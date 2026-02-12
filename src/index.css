@@ -127,6 +127,13 @@ body::before {
   transform: translateY(-1px);
 }
 
+.toolbar-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: var(--shadow-soft);
+  transform: none;
+}
+
 .editor-textarea {
   background: var(--paper-panel);
   border: 1px solid var(--paper-border);
